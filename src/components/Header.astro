@@ -1,0 +1,45 @@
+---
+import { SITE_TITLE } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+---
+
+<header>
+	<nav>
+		<a class="brand" href="/">{SITE_TITLE}</a>
+		<div class="internal-links">
+			<HeaderLink href="/">首页</HeaderLink>
+			<HeaderLink href="/blog">文章</HeaderLink>
+			<HeaderLink href="/projects">项目</HeaderLink>
+			<HeaderLink href="/about">关于</HeaderLink>
+		</div>
+	</nav>
+</header>
+<style>
+	header {
+		padding: 1.1rem clamp(1.25rem, 5vw, 5rem);
+		border-bottom: 1px solid var(--line);
+	}
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 1160px;
+		margin: 0 auto;
+	}
+	.brand { color: var(--ink); font-family: var(--font-display); font-size: 1.12rem; font-weight: 700; letter-spacing: -.03em; text-decoration: none; }
+	nav a {
+		padding: .5rem .7rem;
+		color: var(--muted);
+		border-bottom: 1px solid transparent;
+		text-decoration: none;
+	}
+	nav a.active {
+		color: var(--ink);
+		border-bottom-color: var(--aurora);
+	}
+	@media (max-width: 720px) {
+		header { padding-inline: 1rem; }
+		nav { align-items: flex-start; gap: .7rem; flex-direction: column; }
+		.internal-links { display: flex; flex-wrap: wrap; margin-left: -.7rem; }
+	}
+</style>
